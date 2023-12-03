@@ -14,6 +14,11 @@ const db = mysql.createConnection({
 
 app.get('/',(re,res)=>{
     return res.json("from backend side");
+    const sql = "SELECT * FROM users";
+    db.query(sql, (err,data)=>{
+        if(err) return res.json(err);
+        return res.json(data);
+    })
 })
 
 app.get('/users',(req,res)=>{
